@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <DischiList></DischiList>
+    <DischiList>
+    </DischiList>
   </div>
 </template>
 
@@ -12,7 +13,7 @@ import DischiList from './components/DischiList.vue';
 export default {
   name: 'App',
   components: {
-    DischiList,
+    DischiList
 }
 }
 </script>
@@ -22,5 +23,9 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+#app{
+  background-color: rgb(0, 0, 85);
+  height: 100vh;
 }
 </style>

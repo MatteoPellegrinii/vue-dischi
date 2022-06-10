@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="contenitore">
     <DischiCard v-for="(item, index) in castDisc" :key="index"
      :discobject= "item"
      />
@@ -28,7 +28,7 @@ export default {
         getDisc(){
             axios.get(this.apiUrl)
             .then(result =>{
-            this.castDisc = result.data
+            this.castDisc = result.data.response;
             console.log(result);
         })
         }
@@ -37,4 +37,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.contenitore{
+    display: flex;
+    width: 60%;
+    margin: auto;
+    flex-wrap: wrap;
+}
 </style>
