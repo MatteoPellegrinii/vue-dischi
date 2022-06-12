@@ -1,8 +1,11 @@
 <template>
-<div class="contenitore">
-    <DischiCard v-for="(item, index) in castDisc" :key="index"
+<div >
+    <div class="contenitore" >
+        <DischiCard v-for="(item, index) in castDisc" :key="index"
      :discobject= "item"
-     />
+     /></div>
+     <div class="loading" v-if="castDisc == false" >LOADING...</div>
+    
 </div>
 </template>
 
@@ -42,5 +45,8 @@ export default {
     width: 60%;
     margin: auto;
     flex-wrap: wrap;
+}
+.loading{
+    color: white;
 }
 </style>
