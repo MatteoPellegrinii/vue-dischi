@@ -3,8 +3,11 @@
     <div class="contenitore" >
        <SelectType @search ="selectgenre" />
 
-        <DischiCard v-for="(item, index) in castDisc" :key="index"
-        :discobject= "item"/>
+        <DischiCard
+        v-for="(item, index) in filteredGenre"
+        :key="index"
+        :discobject="item"
+      />
     </div>
     <div class="loading" v-if="castDisc == false" >LOADING...</div>
     
@@ -22,13 +25,13 @@ export default {
     DischiCard,
     SelectType,
 },
-    data(){
-        return{
-            apiUrl: 'https://flynn.boolean.careers/exercises/api/array/music',
-            castDisc: [],
-            userChoose: "TUTTI"
-        }
-    },
+ data() {
+    return {
+      apiUrl: "https://flynn.boolean.careers/exercises/api/array/music",
+      castDisc: [],
+      userChoose: "TUTTI",
+    };
+  },
     created(){
         this.getDisc();
     },
@@ -40,23 +43,24 @@ export default {
             console.log(result);
         })
         },
-        selectgenre(userChoose){
-           this.GenreSelected === userChoose;
-           console.log(userChoose);
-        }
+            selectgenre(GenreSelected) {
+        this.userChoose = GenreSelected;
+        console.log(this.userChoose);
+        },
     },
     computed: {
-        filteredGenre(){
-            if (this.userChoose === "TUTTI") {
-                return this.castDisc;
-            } else{
-                return this.castDisc.filter(item =>{
-                return item.genre.toLowerCase().includes(this.userChoose.toLowerCase())
-            });
-            }
-            
-            
-        }
+            filteredGenre() {
+                console.log(this.userChoose);
+                if (this.userChoose === "TUTTI") {
+                    return this.castDisc;
+                } else {
+                    return this.castDisc.filter((item) => {
+                    return item.genre
+                        .toLowerCase()
+                        .includes(this.userChoose.toLowerCase());
+                    });
+                }
+                },
     }
 }
 </script>
