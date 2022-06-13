@@ -1,6 +1,6 @@
 <template>
         <div class="selection">
-        <select name="GENERE" id="GENERE" @click="$emit('myselect', GenreSelected)"> 
+        <select v-model="GenreSelected" name="GENERE" id="GENERE" @change="$emit('search', GenreSelected)"> 
             <option value="TUTTI">TUTTI</option> 
             <option value="ROCK">ROCK</option>
             <option value="POP">POP</option>
@@ -15,7 +15,7 @@ export default {
     name: 'SelectType',
     data(){
         return{
-            GenreSelected: ""
+            GenreSelected: "TUTTI"
         }
     }
 }

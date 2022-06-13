@@ -1,7 +1,8 @@
 <template>
 <div >
     <div class="contenitore" >
-       <SelectType @myselect ="selectgenre" />
+       <SelectType @search ="selectgenre" />
+
         <DischiCard v-for="(item, index) in castDisc" :key="index"
         :discobject= "item"/>
     </div>
@@ -25,6 +26,7 @@ export default {
         return{
             apiUrl: 'https://flynn.boolean.careers/exercises/api/array/music',
             castDisc: [],
+            userChoose: "TUTTI"
         }
     },
     created(){
@@ -38,10 +40,22 @@ export default {
             console.log(result);
         })
         },
+        selectgenre(userChoose){
+           this.GenreSelected === userChoose;
+           console.log(userChoose);
+        }
     },
     computed: {
         filteredGenre(){
-            return this.castDisc;
+            if (this.userChoose === "TUTTI") {
+                return this.castDisc;
+            } else{
+                return this.castDisc.filter(item =>{
+                return item.genre.toLowerCase().includes(this.userChoose.toLowerCase())
+            });
+            }
+            
+            
         }
     }
 }
