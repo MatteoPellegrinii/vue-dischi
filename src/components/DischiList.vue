@@ -1,10 +1,11 @@
 <template>
 <div >
     <div class="contenitore" >
+       <SelectType @myselect = "selectgenre" />
         <DischiCard v-for="(item, index) in castDisc" :key="index"
-     :discobject= "item"
-     /></div>
-     <div class="loading" v-if="castDisc == false" >LOADING...</div>
+        :discobject= "item"/>
+    </div>
+    <div class="loading" v-if="castDisc == false" >LOADING...</div>
     
 </div>
 </template>
@@ -12,16 +13,18 @@
 <script>
 import axios from 'axios'
 import DischiCard from './DischiCard.vue';
+import SelectType from './SelectType.vue';
 
 export default {
     name: 'DischiList',
     components: {
-    DischiCard
+    DischiCard,
+    SelectType,
 },
     data(){
         return{
             apiUrl: 'https://flynn.boolean.careers/exercises/api/array/music',
-            castDisc: []
+            castDisc: [],
         }
     },
     created(){
@@ -34,12 +37,18 @@ export default {
             this.castDisc = result.data.response;
             console.log(result);
         })
+        },
+        selectgenre(){
+            
         }
     }
 }
 </script>
 
 <style scoped lang="scss">
+.selection{
+    width: 100%;
+}
 .contenitore{
     display: flex;
     width: 60%;
