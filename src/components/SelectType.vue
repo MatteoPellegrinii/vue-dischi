@@ -1,6 +1,6 @@
 <template>
         <div class="selection">
-        <select name="GENERE" id="GENERE" @enter="$emit('myselect', GenreSelected)"> 
+        <select name="GENERE" id="GENERE" @click="$emit('myselect', GenreSelected)"> 
             <option value="TUTTI">TUTTI</option> 
             <option value="ROCK">ROCK</option>
             <option value="POP">POP</option>

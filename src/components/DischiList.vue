@@ -1,7 +1,7 @@
 <template>
 <div >
     <div class="contenitore" >
-       <SelectType @myselect = "selectgenre" />
+       <SelectType @myselect ="selectgenre" />
         <DischiCard v-for="(item, index) in castDisc" :key="index"
         :discobject= "item"/>
     </div>
@@ -38,8 +38,10 @@ export default {
             console.log(result);
         })
         },
-        selectgenre(){
-            
+    },
+    computed: {
+        filteredGenre(){
+            return this.castDisc;
         }
     }
 }
